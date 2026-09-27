@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISUAL VIBE | Creative Design Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0b0c;
+      --card-bg: #141416;
+      --text-color: #f1f1f1;
+      --text-muted: #a0a0a0;
+      --accent-color: #00ff66; /* Electric Green */
+      --accent-glow: rgba(0, 255, 102, 0.2);
+      --border-color: #26262a;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(11, 11, 12, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent-color);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .cta-btn {
+      background: var(--accent-color);
+      color: #000;
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* HERO SECTION WITH MOSAIC BACKGROUND */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 5% 4rem 5%;
+      overflow: hidden;
+    }
+
+    /* Mosaic Art Grid Overlay */
+    .hero-mosaic {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding: 20px;
+      opacity: 0.22;
+      filter: grayscale(40%) contrast(110%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .mosaic-item {
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(11,11,12,0.6) 0%, var(--bg-color) 90%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: 1px solid var(--accent-color);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 6rem 5%;
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title span {
+      color: var(--accent-color);
+    }
+
+    /* SERVICES SECTION */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-5px);
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* PORTFOLIO SECTION */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .portfolio-card:hover .portfolio-img {
+      transform: scale(1.03);
+    }
+
+    .portfolio-info {
+      padding: 1.2rem;
+    }
+
+    .portfolio-info h4 {
+      font-size: 1.1rem;
+    }
+
+    .portfolio-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ABOUT / FOUNDER SECTION */
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 4rem;
+      border-radius: 20px;
+    }
+
+    .founder-quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      border-left: 3px solid var(--accent-color);
+      padding-left: 1.5rem;
+      margin-top: 1.5rem;
+      color: var(--text-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(0,255,102,0.05) 0%, transparent 70%);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      color: var(--text-color);
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+      .about-container { grid-template-columns: 1fr; padding: 2rem; }
+      .hero-mosaic { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">VISUAL <span>VIBE</span></div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="#contact" class="cta-btn">Start Project</a>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <!-- Art Mosaic Background -->
+    <div class="hero-mosaic">
+      <div class="mosaic-item" style="background-image: url('image_0947bb.jpg');"></div>
+      <div class="mosaic-item" style="background-image: url('image_094b1b.jpg');"></div>
+      <div class="mosaic-item" style="background-image: url('image_0947f8.jpg');"></div>
+      <div class="mosaic-item" style="background-image: url('image_09443a.png');"></div>
+      <div class="mosaic-item" style="background-image: url('image_094b1b.jpg');"></div>
+      <div class="mosaic-item" style="background-image: url('image_0947bb.jpg');"></div>
+      <div class="mosaic-item" style="background-image: url('image_09443a.png');"></div>
+      <div class="mosaic-item" style="background-image: url('image_0947f8.jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-tagline">Creative Design Studio</div>
+      <h1 class="hero-title">Modern Designs. Powerful Visual Stories.</h1>
+      <p class="hero-desc">We craft bold visual identities, striking poster art, and creative designs that help brands stand out.</p>
+      <a href="#contact" class="cta-btn">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">Core <span>Services</span></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>🎨 Logo Design</h3>
+        <p>Distinctive visual marks that represent your brand core.</p>
+      </div>
+      <div class="service-card">
+        <h3>🖼️ Poster Design</h3>
+        <p>Eye-catching typography and striking art compositions.</p>
+      </div>
+      <div class="service-card">
+        <h3>📱 Social Media</h3>
+        <p>High-impact visual campaigns tailored for digital growth.</p>
+      </div>
+      <div class="service-card">
+        <h3>✨ Brand Identity</h3>
+        <p>Comprehensive visual language and system guidelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="works">
+    <h2 class="section-title">Featured <span>Works</span></h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="image_0947bb.jpg" alt="Doodle Sculpture Poster" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>01 — Expressive Sculpture Art</h4>
+          <p>Poster Design / Typography</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="image_094b1b.jpg" alt="Bold Typography Art" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>02 — Bold Quote Artwork</h4>
+          <p>Graphic Design / Creative Direction</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="image_0947f8.jpg" alt="Street Graffiti Sculpture" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>03 — Street Art Collage</h4>
+          <p>Brand Identity / Visual Artwork</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="image_09443a.png" alt="Surreal Puzzle Illustration" class="portfolio-img">
+        <div class="portfolio-info">
+          <h4>04 — Conceptual Puzzle Design</h4>
+          <p>Digital Illustration / Visual Identity</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / FOUNDER -->
+  <section id="about">
+    <div class="about-container">
+      <div>
+        <h2 class="section-title" style="margin-bottom: 1rem;">About <span>Visual Vibe</span></h2>
+        <p>Visual Vibe is a creative studio founded by <strong>Saheem Ashraf</strong>. We specialize in transforming ideas into professional designs that communicate, inspire, and connect with audiences globally.</p>
+        
+        <div class="skills-list">
+          <span class="skill-tag">Graphic Design</span>
+          <span class="skill-tag">Branding</span>
+          <span class="skill-tag">Visual Communication</span>
+          <span class="skill-tag">Creative Direction</span>
+        </div>
+      </div>
+      <div>
+        <div class="founder-quote">
+          "Design is not just about making things look good; it is about telling a story visually."
+        </div>
+        <p style="margin-top: 1.5rem; color: var(--text-muted); font-weight: 600;">— Saheem Ashraf, Founder</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">Have a project idea? <br><span>Let's create something amazing.</span></h2>
+    <div class="contact-links">
+      <a href="mailto:contact@visualvibe.studio" class="contact-btn">📧 Email Us</a>
+      <a href="#" class="contact-btn">📱 WhatsApp</a>
+      <a href="#" class="contact-btn">🔗 LinkedIn</a>
+      <a href="#" class="contact-btn">📸 Instagram</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Visual Vibe Studio by Saheem Ashraf. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
